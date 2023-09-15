@@ -1,0 +1,55 @@
+<canvas id = "game" width="800" height="600" style ="border:1px solid black;"></canvas>
+
+<script>
+    let x = 100;
+    let left = false;
+    let right = false;
+    
+    window.onload = function (){
+        document.addEventListener("keydown", keydown);
+        document.addEventListener("keyup",keyup);
+        setInterval(paintScreen, 100);
+    }
+    function keydown(evt){
+        let eventCode = evt.keyCode;
+        switch(eventCode){
+            case 37:
+                left = true;
+                break;
+            case 39: 
+                right = true;
+                break;
+        }
+        
+    }
+     function keyup(evt){
+        let eventCode = evt.keyCode;
+        switch(eventCode){
+            case 37:
+                left = false;
+                break;
+            case 39: 
+                right = false;
+                break;
+        }
+        
+    }
+    function paintScreen(){
+        if(left){
+            x--;
+        }
+        if(right){
+            x++;
+        }
+    let canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#696";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "#00F";
+    ctx.fillRect(x,100, 100, 100);
+    
+    }
+   
+
+    
+</script>
